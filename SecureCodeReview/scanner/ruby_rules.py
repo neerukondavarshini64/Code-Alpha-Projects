@@ -1,0 +1,64 @@
+import re
+
+def analyze_code(code):
+    issues = []
+
+    lines = code.splitlines()
+
+    for line_no, line in enumerate(lines, start=1):
+
+        # eval()
+        if "eval(" in line:
+            issues.append((
+                "High",
+                line_no,
+                "Use of eval()",
+                "Avoid eval(). It can execute malicious code."
+            ))
+
+        # system()
+        if "system(" in line:
+            issues.append((
+                "High",
+                line_no,
+                "Command Execution",
+                "Avoid system() with untrusted input."
+            ))
+
+        # Hardcoded Password
+        if re.search(r'password\s*=\s*["\'].*["\']', line, re.IGNORECASE):
+            issues.append((
+                "High",
+                line_no,
+                "Hardcoded Password",
+                "Store passwords securely."
+            ))
+
+        # SQL Injection
+        if "SELECT" in line.upper() and "+" in line:
+            issues.append((
+                "High",
+                line_no,
+                "Possible SQL Injection",
+                "Use parameterized queries."
+            ))
+
+        # MD5
+        if "MD5" in line.upper():
+            issues.append((
+                "Medium",
+                line_no,
+                "Weak Cryptography",
+                "Use SHA-256 or stronger algorithms."
+            ))
+
+        # TODO
+        if "TODO" in line.upper():
+            issues.append((
+                "Low",
+                line_no,
+                "TODO Comment",
+                "Review unfinished code."
+            ))
+
+    return issues
