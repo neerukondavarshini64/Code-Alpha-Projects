@@ -47,9 +47,7 @@ def home():
             "sh": "Shell Script"
         }
 
-        # -----------------------------
-        # Upload File
-        # -----------------------------
+        
         if uploaded_file and uploaded_file.filename != "":
 
             filename = uploaded_file.filename
@@ -68,9 +66,7 @@ def home():
 
             issues = analyze_file(submitted_code, filename)
 
-        # -----------------------------
-        # Paste Code
-        # -----------------------------
+    
         elif submitted_code:
 
             language = language_map.get(selected_language, "Python")
@@ -79,9 +75,7 @@ def home():
 
             issues = analyze_file(submitted_code, filename)
 
-        # -----------------------------
-        # Dashboard Counts
-        # -----------------------------
+    
         total = len(issues)
 
         for issue in issues:

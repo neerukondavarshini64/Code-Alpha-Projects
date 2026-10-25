@@ -69,7 +69,7 @@ SecureCodeReview/
 │── requirements.txt
 │── README.md
 │── .gitignore
-│
+│__ .images
 ├── scanner/
 │   ├── analyzer.py
 │   ├── python_rules.py
@@ -161,34 +161,6 @@ http://127.0.0.1:5000
 7. Download the generated security report.
 
 ---
-
-## 📷 Screenshots
-
-### Home Page
-
-> Add a screenshot here.
-
-Example:
-
-```
-images/home.png
-```
-
----
-
-### Security Report
-
-> Add a screenshot here.
-
-Example:
-
-```
-images/report.png
-```
-
----
-
-### Dashboard
 
 ## 📷 Screenshots
 
